@@ -1,0 +1,135 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "contract Doctor",
+				"name": "newDoctor",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "DoctorAdded",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "_doctors",
+		"outputs": [
+			{
+				"internalType": "contract Doctor",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "age",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "imageURL",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "yoe",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "dob",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "speciality",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "degreeURL",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "licenseNum",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "aadaharNum",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "createdBy",
+				"type": "address"
+			}
+		],
+		"name": "createDoctor",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "doctorCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "limit",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "offset",
+				"type": "uint256"
+			}
+		],
+		"name": "doctors",
+		"outputs": [
+			{
+				"internalType": "contract Doctor[]",
+				"name": "coll",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
