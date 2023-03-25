@@ -9,7 +9,10 @@ export default function AuthButton() {
       {state == null ? (
         <button onClick={() => auth.signIn()}>Sign In</button>
       ) : (
-        <button onClick={() => auth.signOut()}>Sign Out</button>
+        <div>
+          <button onClick={() => auth.signOut()}>Sign Out</button>
+          <span>{state.userId}</span>
+        </div>
       )}
     </div>
   );
