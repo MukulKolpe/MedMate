@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuth } from "@polybase/react";
+import Form from "../../components/MultiStepForm/Form";
 
 const Profile = () => {
   const { auth, state } = useAuth();
@@ -8,7 +9,7 @@ const Profile = () => {
       {state != null ? (
         <div>
           <span>Welcome, {state.userId}</span> <br />
-          <span>Please complete your profile registration.</span>
+          <Form />
         </div>
       ) : (
         <div>Please Connect your wallet.</div>
