@@ -11,7 +11,6 @@ export default function AuthButton() {
       ) : (
         <div>
           <button onClick={() => auth.signOut()}>Sign Out</button>
-          <span>{state.userId}</span>
         </div>
       )}
     </div>

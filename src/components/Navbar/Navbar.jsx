@@ -14,20 +14,22 @@ import {
   Stack,
   Icon,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { useAuth } from "@polybase/react";
 import { CgProfile } from "react-icons/cg";
 import Avatar from "avataaars";
 import { generateRandomAvatarOptions } from "../../utils/avatar";
+import { px } from "framer-motion";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { auth, state } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={10}>
+      <Box bg={useColorModeValue("white", "gray.800")} px={10}>
         <Flex
           h={16}
           alignItems="center"
@@ -73,7 +75,7 @@ export default function Navbar() {
                 size={"sm"}
                 mr={4}
                 leftIcon={<Icon as={CgProfile} boxSize={6} />}
-                onClick={() => auth.signIn()}
+                onClick={() => auth.signIn() && navigate("/profile")}
               >
                 Sign In
               </Button>
@@ -101,6 +103,7 @@ export default function Navbar() {
                     Welcome,{" "}
                     {state.userId.slice(0, 4) + "..." + state.userId.slice(-4)}
                   </MenuItem>
+                  <MenuDivider />
                   <MenuItem as={Link} to="/profile">
                     Profile
                   </MenuItem>
