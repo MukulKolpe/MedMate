@@ -45,11 +45,6 @@
 				"internalType": "string",
 				"name": "_licenseNum",
 				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_aadharNum",
-				"type": "string"
 			}
 		],
 		"stateMutability": "nonpayable",
@@ -76,12 +71,12 @@
 	},
 	{
 		"inputs": [],
-		"name": "aadharNum",
+		"name": "admin",
 		"outputs": [
 			{
-				"internalType": "string",
+				"internalType": "address",
 				"name": "",
-				"type": "string"
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -134,6 +129,19 @@
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isVerified",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -207,6 +215,24 @@
 			}
 		],
 		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "_status",
+				"type": "bool"
+			},
+			{
+				"internalType": "address",
+				"name": "_admin",
+				"type": "address"
+			}
+		],
+		"name": "verifyDoctor",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

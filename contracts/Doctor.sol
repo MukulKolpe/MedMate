@@ -13,7 +13,8 @@ contract Doctor is Ownable {
     string public speciality;
     string public degreeURL;
     string public licenseNum;
-    string public aadharNum;
+    bool public isVerified;
+    address public admin = 0xaE93A422CB100d43f0F6bc5F0a8322119FD74385;
 
     constructor(
         string memory _name,
@@ -24,8 +25,7 @@ contract Doctor is Ownable {
         address payable _createdBy,
         string memory _speciality,
         string memory _degreeURL,
-        string memory _licenseNum,
-        string memory _aadharNum
+        string memory _licenseNum
     ) {
         name = _name;
         imageURL = _imageURL;
@@ -36,6 +36,15 @@ contract Doctor is Ownable {
         speciality = _speciality;
         degreeURL = _degreeURL;
         licenseNum = _licenseNum;
-        aadharNum = _aadharNum;
+        isVerified = false;
+    }
+
+    modifier onlyAdmin(address _admin) {
+        require(_admin == admin);
+        _;
+    }
+
+    function verifyDoctor(bool _status,address _admin) public onlyAdmin(_admin) {
+        isVerified = _status;
     }
 }

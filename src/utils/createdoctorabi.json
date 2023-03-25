@@ -80,11 +80,6 @@
 				"type": "string"
 			},
 			{
-				"internalType": "string",
-				"name": "aadaharNum",
-				"type": "string"
-			},
-			{
 				"internalType": "address payable",
 				"name": "createdBy",
 				"type": "address"
