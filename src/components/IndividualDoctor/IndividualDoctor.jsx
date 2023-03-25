@@ -163,7 +163,7 @@ export default function IndividualDoctor({ individualDoctor }) {
 
   return (
     <div>
-      {isVerified && (
+      {!isVerified && (
         <Center py={6}>
           <Box
             maxW={"325px"}
