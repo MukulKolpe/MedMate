@@ -289,18 +289,6 @@ export default function multistep() {
   const [bloodPressure, setBloodPressure] = useState();
   const [other, setOther] = useState("Nil");
 
-  console.log(
-    name,
-    age,
-    address,
-    gender,
-    bloodGrp,
-    diabetes,
-    cardio,
-    bloodPressure,
-    other
-  );
-
   return (
     <>
       <Box
