@@ -45,6 +45,16 @@
 				"internalType": "string",
 				"name": "_licenseNum",
 				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_email",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_gender",
+				"type": "string"
 			}
 		],
 		"stateMutability": "nonpayable",
@@ -111,6 +121,32 @@
 	{
 		"inputs": [],
 		"name": "dob",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "email",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "gender",
 		"outputs": [
 			{
 				"internalType": "string",

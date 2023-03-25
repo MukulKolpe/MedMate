@@ -11,8 +11,8 @@ contract CreateDoctor{
         return _doctors.length;
     }
 
-    function createDoctor(string memory name,uint256 age,string memory imageURL,uint256 yoe,string memory dob,string memory speciality,string memory degreeURL,string memory licenseNum,address payable createdBy)public{
-        Doctor newDoctor = new Doctor(name,imageURL,age,yoe,dob,createdBy,speciality,degreeURL,licenseNum);
+    function createDoctor(string memory name,uint256 age,string memory imageURL,uint256 yoe,string memory dob,string memory speciality,string memory degreeURL,string memory licenseNum,address payable createdBy,string memory email,string memory gender)public{
+        Doctor newDoctor = new Doctor(name,imageURL,age,yoe,dob,createdBy,speciality,degreeURL,licenseNum,email,gender);
         _doctors.push(newDoctor);
         emit DoctorAdded(newDoctor,createdBy);
     }
