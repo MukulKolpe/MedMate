@@ -4,7 +4,7 @@ import AuthButton from "../../components/Auth/AuthButton";
 const Home = () => {
   return (
     <div>
-      <AuthButton />
+      <h1>Home</h1>
     </div>
   );
 };

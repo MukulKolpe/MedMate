@@ -9,6 +9,7 @@ import Forum from "./pages/Forum/Forum";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 const polybase = new Polybase();
 const auth = new Auth();
@@ -27,6 +28,7 @@ function App() {
               <Route path="Admin" element={<Admin />} />
               <Route path="/forum" element={<Forum />} />
             </Routes>
+            <Footer />
           </Router>
         </AuthProvider>
       </PolybaseProvider>
