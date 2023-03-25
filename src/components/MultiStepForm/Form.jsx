@@ -28,6 +28,15 @@ import {
 } from "@chakra-ui/react";
 
 import { useToast } from "@chakra-ui/react";
+import { Polybase } from "@polybase/client";
+import * as eth from "@polybase/eth";
+import { useAuth } from "@polybase/react";
+
+const db = new Polybase({
+  defaultNamespace:
+    "pk/0x7774c566b97a8dd478608f1885586af3cd4590288dc6a6ef949be2e68637d81d2172cdb0fb8d1e286c318358911af8c477d13b08d7c1526dbe1ea603ca4c6591/MedMate",
+});
+const collectionRef = db.collection("User");
 
 const Form1 = ({ getName, getAddress, getAge }) => {
   const [show, setShow] = React.useState(false);
@@ -280,7 +289,7 @@ export default function multistep() {
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(33.33);
   const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(18);
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState("");
   const [bloodGrp, setBloodGrp] = useState("");
@@ -288,6 +297,23 @@ export default function multistep() {
   const [cardio, setCardio] = useState();
   const [bloodPressure, setBloodPressure] = useState();
   const [other, setOther] = useState("Nil");
+  const { auth, state } = useAuth();
+
+  async function createUser() {
+    const res = await collectionRef.create([
+      state.userId,
+      name,
+      age,
+      address,
+      gender,
+      bloodGrp,
+      diabetes,
+      cardio,
+      bloodPressure,
+      other,
+    ]);
+    console.log(res);
+  }
 
   return (
     <>
@@ -365,6 +391,7 @@ export default function multistep() {
                 colorScheme="red"
                 variant="solid"
                 onClick={() => {
+                  createUser();
                   toast({
                     title: "Account created.",
                     description:
