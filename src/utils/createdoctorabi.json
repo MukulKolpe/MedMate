@@ -83,6 +83,16 @@
 				"internalType": "address payable",
 				"name": "createdBy",
 				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "email",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "gender",
+				"type": "string"
 			}
 		],
 		"name": "createDoctor",

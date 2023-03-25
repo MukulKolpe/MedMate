@@ -14,6 +14,8 @@ contract Doctor is Ownable {
     string public degreeURL;
     string public licenseNum;
     bool public isVerified;
+    string public email;
+    string public gender;
     address public admin = 0xaE93A422CB100d43f0F6bc5F0a8322119FD74385;
 
     constructor(
@@ -25,7 +27,9 @@ contract Doctor is Ownable {
         address payable _createdBy,
         string memory _speciality,
         string memory _degreeURL,
-        string memory _licenseNum
+        string memory _licenseNum,
+        string memory _email,
+        string memory _gender
     ) {
         name = _name;
         imageURL = _imageURL;
@@ -37,6 +41,8 @@ contract Doctor is Ownable {
         degreeURL = _degreeURL;
         licenseNum = _licenseNum;
         isVerified = false;
+        email = _email;
+        gender = _gender;
     }
 
     modifier onlyAdmin(address _admin) {
