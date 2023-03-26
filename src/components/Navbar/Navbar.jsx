@@ -54,18 +54,34 @@ export default function Navbar() {
             <Link to="/">MedMate</Link>
           </HStack>
           <Flex alignItems={"center"}>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}
-              marginRight={4}
-            >
-              <Link to="/profile">
-                <Button w="full" variant="ghost">
-                  Profile
-                </Button>
-              </Link>
-            </HStack>
+            {state && (
+              <div style={{ display: "flex" }}>
+                <HStack
+                  as={"nav"}
+                  spacing={4}
+                  display={{ base: "none", md: "flex" }}
+                  marginRight={4}
+                >
+                  <Link to="/book">
+                    <Button w="full" variant="ghost">
+                      Book Appointment
+                    </Button>
+                  </Link>
+                </HStack>
+                <HStack
+                  as={"nav"}
+                  spacing={4}
+                  display={{ base: "none", md: "flex" }}
+                  marginRight={4}
+                >
+                  <Link to="/profile">
+                    <Button w="full" variant="ghost">
+                      Profile
+                    </Button>
+                  </Link>
+                </HStack>
+              </div>
+            )}
             {state == null ? (
               <Button
                 display="flex"
@@ -121,6 +137,13 @@ export default function Navbar() {
               <Link to="/profile">
                 <Button w="full" variant="ghost">
                   Profile
+                </Button>
+              </Link>
+            </Stack>
+            <Stack as={"nav"} spacing={4}>
+              <Link to="/book">
+                <Button w="full" variant="ghost">
+                  Book Appointment
                 </Button>
               </Link>
             </Stack>

@@ -24,7 +24,7 @@ export default function DisplayProfile({ name, age, gender, bloodGrp }) {
           my={12}
         >
           <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
-            Basic User Details
+            User Profile
           </Heading>
           <FormControl id="userName">
             <FormLabel>User name</FormLabel>
