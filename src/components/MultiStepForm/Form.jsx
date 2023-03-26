@@ -25,18 +25,32 @@ import {
   Radio,
   RadioGroup,
   Stack,
+  useToast,
 } from "@chakra-ui/react";
 
-import { useToast } from "@chakra-ui/react";
 import { Polybase } from "@polybase/client";
-import * as eth from "@polybase/eth";
 import { useAuth } from "@polybase/react";
+import * as eth from "@polybase/eth";
 
 const db = new Polybase({
   defaultNamespace:
     "pk/0x7774c566b97a8dd478608f1885586af3cd4590288dc6a6ef949be2e68637d81d2172cdb0fb8d1e286c318358911af8c477d13b08d7c1526dbe1ea603ca4c6591/MedMate",
 });
+
 const collectionRef = db.collection("User");
+
+db.signer(async (data) => {
+  // A permission dialog will be presented to the user
+  const accounts = await eth.requestAccounts();
+
+  // If there is more than one account, you may wish to ask the user which
+  // account they would like to use
+  const account = accounts[0];
+
+  const sig = await eth.sign(data, account);
+
+  return { h: "eth-personal-sign", sig };
+});
 
 const Form1 = ({ getName, getAddress, getAge }) => {
   const [show, setShow] = React.useState(false);
@@ -312,7 +326,6 @@ export default function multistep() {
       bloodPressure,
       other,
     ]);
-    console.log(res);
   }
 
   return (
