@@ -24,9 +24,11 @@ import { useEffect, useState } from "react";
 import doctorabi from "../../utils/doctorabi.json";
 import { ethers } from "ethers";
 import { useAuth } from "@polybase/react";
-import { Input } from '@chakra-ui/react'
+import { Input } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 
 export default function ApprovedDoctor({ individualDoctor }) {
+  const toast = useToast();
   console.log("address: " + individualDoctor);
   const { auth, state } = useAuth();
   const [name, setName] = useState("");
@@ -40,6 +42,7 @@ export default function ApprovedDoctor({ individualDoctor }) {
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [isVerified, setIsVerifed] = useState(false);
+  const [appointmentDate, setAppointmentDate] = useState("");
 
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -238,13 +241,30 @@ export default function ApprovedDoctor({ individualDoctor }) {
                   <ModalHeader>Medical Degree</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
-                  <Input
-                    placeholder="Select Date and Time"
-                    size="md"
-                    type="datetime-local"
-                  />
+                    <Input
+                      placeholder="Select Date and Time"
+                      size="md"
+                      type="datetime-local"
+                      onChange={(e) => setAppointmentDate(e.target.value)}
+                    />
                   </ModalBody>
                   <ModalFooter>
+                    {appointmentDate != "" && (
+                      <Button 
+                        onClick={() =>
+                          toast({
+                            title: "Message Sent!",
+                            description: `Slot booked for ${appointmentDate}. ${name} will review and get back to you.`,
+                            status: "success",
+                            duration: 9000,
+                            isClosable: true,
+                          })
+                        }
+                        m={2}
+                      >
+                        Book Appointment
+                      </Button>
+                    )}
                     <Button onClick={onClose}>Close</Button>
                   </ModalFooter>
                 </ModalContent>
