@@ -148,14 +148,6 @@ export default function ApprovedDoctor({ individualDoctor }) {
       });
   }, []);
 
-  const approveDoctor = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(individualDoctor, doctorabi, signer);
-    const tx = contract.verifyDoctor(true, state.userId);
-    console.log(tx);
-  };
-
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [size, setSize] = useState("md");
 
@@ -169,12 +161,12 @@ export default function ApprovedDoctor({ individualDoctor }) {
       {isVerified && (
         <Center py={6}>
           <Box
-            maxW={"325px"}
-            w={"full"}
-            bg={useColorModeValue("white", "gray.800")}
-            boxShadow={"2xl"}
-            rounded={"md"}
-            overflow={"hidden"}
+          maxW={"325px"}
+          w={"full"}
+          bg={useColorModeValue("white", "gray.800")}
+          boxShadow={"2xl"}
+          rounded={"md"}
+          overflow={"hidden"}
           >
             <Image
               h={"120px"}

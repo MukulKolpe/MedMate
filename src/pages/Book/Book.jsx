@@ -61,11 +61,11 @@ const Book = () => {
 
   return (
     <div>
-      <Grid templateColumns="repeat(4, 1fr)" gap={6}>
+      <Flex templateColumns="repeat(4, 1fr)" gap={3} minW={200} >
         {doctors.map((item, index) => (
           <ApprovedDoctor w="100%" individualDoctor={item} key={index} />
         ))}
-      </Grid>
+      </Flex>
     </div>
   );
 };
