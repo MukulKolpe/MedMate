@@ -47,7 +47,21 @@ const Apply = () => {
       createdoctorabi,
       signer
     );
-    console.log(` ${age} ${yoe}`);
+    console.log(name);
+    console.log(age);
+    console.log(imageURL);
+    console.log();
+    console.log(`${name} 
+                  ${age} 
+                  ${imageURL} 
+                  ${yoe} 
+                  ${dob} 
+                  ${speciality} 
+                  ${degreeURL} 
+                  ${licenseNum} 
+                  ${state.userId} 
+                  ${email} 
+                  ${gender}`);
     const tx = await contract.createDoctor(
       name,
       age,
