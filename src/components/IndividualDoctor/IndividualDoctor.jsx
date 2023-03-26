@@ -18,13 +18,12 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure 
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import doctorabi from "../../utils/doctorabi.json";
 import { ethers } from "ethers";
 import { useAuth } from "@polybase/react";
-
 
 export default function IndividualDoctor({ individualDoctor }) {
   console.log("address: " + individualDoctor);
@@ -39,7 +38,7 @@ export default function IndividualDoctor({ individualDoctor }) {
   const [licensenum, setLicensenum] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
-  const [isVerified,setIsVerifed] = useState(false);
+  const [isVerified, setIsVerifed] = useState(false);
 
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -145,21 +144,21 @@ export default function IndividualDoctor({ individualDoctor }) {
       });
   }, []);
 
-  const approveDoctor = async() =>{
+  const approveDoctor = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(individualDoctor, doctorabi, signer);
     const tx = contract.verifyDoctor(true, state.userId);
     console.log(tx);
-  }
+  };
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const [size, setSize] = useState('md')
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [size, setSize] = useState("md");
 
   const handleSizeClick = (newSize) => {
-    setSize(newSize)
-    onOpen()
-  }
+    setSize(newSize);
+    onOpen();
+  };
 
   return (
     <div>
@@ -191,7 +190,7 @@ export default function IndividualDoctor({ individualDoctor }) {
                 }}
               />
             </Flex>
-  
+
             <Box p={6}>
               <Stack spacing={0} align={"center"} mb={5}>
                 <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
@@ -199,7 +198,7 @@ export default function IndividualDoctor({ individualDoctor }) {
                 </Heading>
                 <Text color={"gray.500"}>{speciality}</Text>
               </Stack>
-  
+
               <Stack direction={"column"} justify={"left"}>
                 <Stack spacing={0} align={"center"}>
                   <Text fontWeight={600}>Experience: {yoe}+ years</Text>
@@ -208,7 +207,7 @@ export default function IndividualDoctor({ individualDoctor }) {
                   <Text fontWeight={600}>Age: {age}</Text>
                 </Stack>
               </Stack>
-  
+
               <Stack direction={"column"} justify={"left"}>
                 <Stack spacing={0} align={"center"}>
                   <Text fontWeight={600}>Gender: {gender}</Text>
@@ -220,7 +219,7 @@ export default function IndividualDoctor({ individualDoctor }) {
                   <Text fontWeight={600}>License No: {licensenum}</Text>
                 </Stack>
               </Stack>
-  
+
               <Button
                 w={"full"}
                 mt={8}
@@ -255,7 +254,7 @@ export default function IndividualDoctor({ individualDoctor }) {
                   <ModalHeader>Medical Degree</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
-                    <img src = {degreeURL}></img>
+                    <img src={degreeURL}></img>
                   </ModalBody>
                   <ModalFooter>
                     <Button onClick={onClose}>Close</Button>
