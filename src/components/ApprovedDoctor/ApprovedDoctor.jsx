@@ -253,7 +253,7 @@ export default function ApprovedDoctor({ individualDoctor }) {
                       <Button 
                         onClick={() =>
                           toast({
-                            title: "Message Sent!",
+                            title: "Slot Booked!",
                             description: `Slot booked for ${appointmentDate}. ${name} will review and get back to you.`,
                             status: "success",
                             duration: 9000,
