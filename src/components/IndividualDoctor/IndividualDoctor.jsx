@@ -143,6 +143,14 @@ export default function IndividualDoctor({ individualDoctor }) {
       .catch((err) => {
         console.log(err);
       });
+    contract
+      .dob()
+      .then((result) => {
+        setDob(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const approveDoctor = async() =>{
@@ -218,6 +226,9 @@ export default function IndividualDoctor({ individualDoctor }) {
                 </Stack>
                 <Stack spacing={0} align={"center"}>
                   <Text fontWeight={600}>License No: {licensenum}</Text>
+                </Stack>
+                <Stack spacing={0} align={"center"}>
+                  <Text fontWeight={600}>Date of Birth: {dob}</Text>
                 </Stack>
               </Stack>
   
