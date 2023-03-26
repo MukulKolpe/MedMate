@@ -24,8 +24,9 @@ import { useEffect, useState } from "react";
 import doctorabi from "../../utils/doctorabi.json";
 import { ethers } from "ethers";
 import { useAuth } from "@polybase/react";
+import { Input } from '@chakra-ui/react'
 
-export default function IndividualDoctor({ individualDoctor }) {
+export default function ApprovedDoctor({ individualDoctor }) {
   console.log("address: " + individualDoctor);
   const { auth, state } = useAuth();
   const [name, setName] = useState("");
@@ -142,14 +143,6 @@ export default function IndividualDoctor({ individualDoctor }) {
       .catch((err) => {
         console.log(err);
       });
-    contract
-      .dob()
-      .then((result) => {
-        setDob(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
   const approveDoctor = async () => {
@@ -170,7 +163,7 @@ export default function IndividualDoctor({ individualDoctor }) {
 
   return (
     <div>
-      {!isVerified && (
+      {isVerified && (
         <Center py={6}>
           <Box
             maxW={"325px"}
@@ -223,12 +216,6 @@ export default function IndividualDoctor({ individualDoctor }) {
                 <Stack spacing={0} align={"center"}>
                   <Text fontWeight={600}>Email: {email}</Text>
                 </Stack>
-                <Stack spacing={0} align={"center"}>
-                  <Text fontWeight={600}>License No: {licensenum}</Text>
-                </Stack>
-                <Stack spacing={0} align={"center"}>
-                  <Text fontWeight={600}>Date of Birth: {dob}</Text>
-                </Stack>
               </Stack>
 
               <Button
@@ -243,21 +230,7 @@ export default function IndividualDoctor({ individualDoctor }) {
                 }}
                 onClick={() => handleSizeClick("xl")}
               >
-                View Medical Degree
-              </Button>
-              <Button
-                w={"full"}
-                mt={8}
-                bg={useColorModeValue("#151f21", "gray.900")}
-                color={"white"}
-                rounded={"md"}
-                _hover={{
-                  transform: "translateY(-2px)",
-                  boxShadow: "lg",
-                }}
-                onClick={() => approveDoctor()}
-              >
-                Approve
+                Book An Appointment
               </Button>
               <Modal onClose={onClose} size={size} isOpen={isOpen}>
                 <ModalOverlay />
@@ -265,7 +238,11 @@ export default function IndividualDoctor({ individualDoctor }) {
                   <ModalHeader>Medical Degree</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
-                    <img src={degreeURL}></img>
+                  <Input
+                    placeholder="Select Date and Time"
+                    size="md"
+                    type="datetime-local"
+                  />
                   </ModalBody>
                   <ModalFooter>
                     <Button onClick={onClose}>Close</Button>
