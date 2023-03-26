@@ -1,16 +1,16 @@
-# MedMate
+# MedMate🏥
 
-## Introduction
+## Introduction📚
 
 MedMate is a Web3 solution to manage medical records, consult with professionals, and book appointments with medical experts with different expertise all in one place
 
 ## Tools & Technologies Used 🎯
-<li>React</li>
+<li>ReactJS</li>
 <li>Chakra UI</li>
 <li>Solidity</li>
 <li>ethersjs</li>
 <li>react-router-dom</li>
-<li>Scroll TestNet</li>
+<li>Scroll's Alpha Testnet</li>
 <li>Polybase</li>
 
 ## List of all Smart Contracts Depolyed on Scroll:-
